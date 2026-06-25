@@ -54,13 +54,11 @@ ARG GOOGLE_ANALYTICS_UID
 
 # Copy the project and remove the node frontend
 COPY . ./
-COPY .git ./
 
 # Install some necessary dependencies
 RUN set -ex \
     && apt update \
-    && apt install git ca-certificates libcurl4 dumb-init --no-install-recommends -y \
-    && git submodule update --init --recursive \
+    && apt install ca-certificates libcurl4 dumb-init --no-install-recommends -y \
     && rm -rf /app/Public /app/Resources \
     && apt autoremove -y \
     && apt autoclean -y
