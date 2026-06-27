@@ -3,12 +3,13 @@ version: "3.5"
 services:
   app:
     platform: linux/x86_64
+    env_file: .env
     image: gitignore-io:latest
     build:
       context: ./
       dockerfile: Dockerfile
     environment:
-      HOST_ORIGIN:
+      HOST_ORIGIN: ${HOST_ORIGIN}
       BASE_PREFIX:
       GOOGLE_ANALYTICS_UID:
     volumes:
